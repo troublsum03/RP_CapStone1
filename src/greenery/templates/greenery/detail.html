@@ -1,0 +1,11 @@
+{{ object.Name }} <br/>
+{{ object.Strains }} <br/>
+{{ object.Cannabinoids }} <br/>
+{{ object.Description }} <br/>
+{{ object.Feeling }} <br/>
+{{ object.HelpWith }} <br/>
+{{ object.Negatives }} <br/>
+{% if object.image %}
+    <img src='{{ object.image.url }}' class='img-fluid' />
+{% endif %}
+
