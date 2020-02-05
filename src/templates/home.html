@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    {% include 'home/css.html' %}
+    {% block home_head %}{% endblock %}
+</head>
+<body>
+    {% include 'home/navbar.html' with brand_name='Green Shop' %}
+    {% block content %}{% endblock %}
+
+
+    {% include 'home/js.html' %}
+    </body>
+</html>

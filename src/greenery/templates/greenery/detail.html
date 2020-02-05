@@ -1,11 +1,22 @@
-{{ object.Name }} <br/>
-{{ object.Strains }} <br/>
-{{ object.Cannabinoids }} <br/>
-{{ object.Description }} <br/>
-{{ object.Feeling }} <br/>
-{{ object.HelpWith }} <br/>
-{{ object.Negatives }} <br/>
-{% if object.image %}
-    <img src='{{ object.image.url }}' class='img-fluid' />
-{% endif %}
+{% extends "home.html" %}
 
+{% block content %}
+<div class='container'>
+    <div class="row">
+        <div class="col">
+    <h1>{{ object.Name }}</h1>
+    <h5>{{ object.Strains }}</h5>
+    <h6>{{ object.Cannabinoids }}</h6>
+    {{ object.timestamp|timesince }} ago
+    {{ object.Description|linebreaks }} <br />
+    {{ object.Feeling }} <br/>
+    {{ object.HelpWith }} <br/>
+    {{ object.Negatives }} <br/>
+    {% if object.image %}
+        <img src='{{ object.image.url }}' class='img-fluid' />
+    {% endif %}
+</div>
+</div>
+</div>
+
+{% endblock %}

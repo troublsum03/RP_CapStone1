@@ -5,8 +5,10 @@ from .views import (
     GreeneryDetailSlugView,
 )
 
+app_name = "greenery"
+
 urlpatterns = [
-    url(r'^$', GreeneryListView.as_view()),
-    url(r'^(?P<slug>[\w-]+)/$', GreeneryDetailSlugView.as_view()),
+    url(r'^$', GreeneryListView.as_view(), name='list'),
+    url(r'^(?P<slug>[\w-]+)/$', GreeneryDetailSlugView.as_view(), name='detail'),
 ]
 

@@ -2,6 +2,7 @@ import random
 import os
 from django.db import models
 from django.db.models.signals import pre_save, post_save
+from django.urls import reverse
 
 from .utlis import unique_slug_generator
 
@@ -56,11 +57,13 @@ class Greenery(models.Model):
     image = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
     featured = models.BooleanField(default=False)
     active = models.BooleanField(default=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     objects = GreeneryManager()
 
     def get_absolute_url(self):
-        return "/greenery/{slug}/".format(slug=self.slug)
+        #return "/greenery/{slug}/".format(slug=self.slug)
+        return reverse("greenery:detail", kwargs={"slug": self.slug})
     
     def __str__(self):
         return self.Name

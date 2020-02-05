@@ -1,7 +1,23 @@
-<!-- {{ object_list }} -->
+{% extends "home.html" %}
 
-{% for obj in object_list %}
+{% block content %}
+    <div class='container'>
+        <div class='row'>
 
-<a href='{{ obj.get_absolute_url }}'>{{ obj.Name }}</a><br />
+    {% for obj in object_list %}
+    <div class='col'>
+        {{ forloop.counter }}
+        {% include 'greenery/snippets/card.html' with instance=obj %}
 
-{% endfor %}
+
+        {% if forloop.counter|divisibleby:3 %}
+        </div> </div><div class='row'><div class="col-12"><hr/></div>
+        {% else %}
+        </div>
+        {% endif %}
+       
+
+    {% endfor %}
+</div>
+</div>
+{% endblock %}
