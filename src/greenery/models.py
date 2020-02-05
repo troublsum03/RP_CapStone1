@@ -1,6 +1,7 @@
 import random
 import os
 from django.db import models
+from django.db.models import Q
 from django.db.models.signals import pre_save, post_save
 from django.urls import reverse
 
@@ -28,6 +29,13 @@ class GreeneryQuerySet(models.query.QuerySet):
     def featured(self):
         return self.filter(featured=True, active=True)
 
+    def search(self, query):
+        lookups = (Q(Name__icontains=query) |
+                   Q(Description__icontains=query) |
+                   Q(Price__icontains=query) |
+                   Q(tag__Name__icontains=query))
+        return self.filter(lookups).distinct()
+
 class GreeneryManager(models.Manager):
     def get_queryset(self):
         return GreeneryQuerySet(self.model, using=self._db)
@@ -43,6 +51,9 @@ class GreeneryManager(models.Manager):
         if qs.count() == 1:
             return qs.first()
         return None
+
+    def search(self, query):
+        return self.get_queryset().active().search(query)
 
 class Greenery(models.Model):
     Strains = models.CharField(max_length=120)
