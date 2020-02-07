@@ -82,6 +82,10 @@ class Greenery(models.Model):
     def __unicode__(self):
         return self.Name
 
+    @property
+    def name(self):
+        return self.Name
+
 
 def greenery_pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:

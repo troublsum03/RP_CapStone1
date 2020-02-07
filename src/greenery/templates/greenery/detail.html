@@ -2,19 +2,22 @@
 
 {% block content %}
     <div class="row">
-        <div class="col">
-    <h1>{{ object.Name }}</h1>
-    <h5>{{ object.Strains }}</h5>
-    <h6>{{ object.Cannabinoids }}</h6>
-    {{ object.timestamp|timesince }} ago
-    {{ object.Description|linebreaks }} <br />
-    {{ object.Feeling }} <br/>
-    {{ object.HelpWith }} <br/>
-    {{ object.Negatives }} <br/>
-    {% if object.image %}
-        <img src='{{ object.image.url }}' class='img-fluid' />
-    {% endif %}
-</div>
+        <div class="col-12 col-md-6">
+            <h1>{{ object.Name }}</h1>
+            <h5>{{ object.Strains }}</h5>
+            <h6>{{ object.Cannabinoids }}</h6>
+            {{ object.timestamp|timesince }} ago
+            {{ object.Description|linebreaks }} <br />
+            {{ object.Feeling }} <br/>
+            {{ object.HelpWith }} <br/>
+            {{ object.Negatives }} <br/>
+            {% if object.image %}
+                <img src='{{ object.image.url }}' class='img-fluid' />
+            {% endif %}
+        </div>
+        <div class="col-12 col-md-6">
+            {% include 'greenery/snippets/update-cart.html' with greenery=object cart=cart %}
+        </div>
 </div>
 
 {% endblock %}

@@ -1,0 +1,43 @@
+{% extends "home.html" %}
+
+{% block content %}
+<h1>Cart</h1>
+
+{% if cart.greenery.exists %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Gas Name</th>
+            <th scope="col">Gas Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for greenery in cart.greenery.all %}
+        <tr>
+            <td scope="row">{{ forloop.counter }}</td>
+            <td><a href="{{ greenery.get_absolute_url }}">{{ greenery.Name }}</a>
+
+                {% include 'greenery/snippets/update-cart.html' with greenery=greenery cart=cart in_cart=True %}
+            </td>
+            <td>{{ greenery.Price }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="2"></td>
+            <td><b>Subtotal:</b>{{ cart.subtotal }}</td>
+        </tr>
+        <tr>
+            <td colspan="2"></td>
+            <td><b>Total:</b>{{ cart.total }}</td>
+        </tr>
+    </tbody>
+</table>
+
+{% else %}
+<p class="lead">Cart is empty</p>
+{% endif %}
+
+
+
+{% endblock %}

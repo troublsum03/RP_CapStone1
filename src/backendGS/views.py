@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, get_user_model
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
+
 from .forms import ContactForm, LoginForm, RegisterForm
 
 
@@ -39,6 +40,7 @@ def contact_page(request):
     #     print(request.POST.get('email'))
     #     print(request.POST.get('content'))
     return render(request, "contact/view.html", context)
+
 
 
 def login_page(request):
