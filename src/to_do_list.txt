@@ -1,0 +1,9 @@
+# Things I want to still add
+# some Jquery, click events for front end and cont flow, dataform
+# Async, for cart count, auto search, contact form
+# Custom User, forms and admin for custom user
+# Stripe, payment method mayb braintree will see.
+# mailchimp, try to use this with django project for marketing
+# look into analytics, custom signal with mixin user sessions
+# Go live
+# edit and more options for account and settings, email activation, link bootstap cards confirmation emails
