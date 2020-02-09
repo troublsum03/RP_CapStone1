@@ -3,7 +3,7 @@ from django.db.models.signals import pre_save, post_save
 from django.urls import reverse
 
 from greenery.models import Greenery
-from greenery.utlis import unique_slug_generator
+from backendGS.utils import unique_slug_generator
 
 
 class Tag(models.Model):

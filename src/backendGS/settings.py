@@ -39,22 +39,27 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # my apps
+    'accounts',
+    'addresses',
+    'billing',
     'carts',
+    'orders',
     'greenery',
     'search',
     'tags', 
 ]
 
 MIDDLEWARE = [
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+LOGOUT_REDIRECT_URL = '/login/'
 ROOT_URLCONF = 'backendGS.urls'
 
 TEMPLATES = [
